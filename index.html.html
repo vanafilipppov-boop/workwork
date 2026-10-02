@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Метаданные: настройка кодировки и отображения на мобилках -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя первая страница | Любимка</title>
+    
+    <!-- CSS-стили (отделка и дизайн нашей страницы) -->
+    <style>
+       /* Темная тема по умолчанию */
+:root {
+    --bg-gradient: linear-gradient(135deg, #1e1e2f, #11111d);
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0b8;
+    --accent-color: #4facfe;
+    --btn-gradient: linear-gradient(45deg, #00f2fe, #4facfe);
+}
+
+/* Светлая тема (переопределяем переменные) */
+body.light-theme {
+    --bg-gradient: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+    --card-bg: rgba(255, 255, 255, 0.6);
+    --card-border: rgba(255, 255, 255, 0.4);
+    --text-primary: #1a1a2e;
+    --text-secondary: #4a4a68;
+    --accent-color: #0052d4;
+    --btn-gradient: linear-gradient(45deg, #43e97b, #38f9d7);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    transition: background 0.4s, border 0.4s;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+}
+
+p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 24px;
+    background: var(--btn-gradient);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Кнопка переключения темы в углу */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-primary);
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    font-size: 0.9rem;
+    transition: all 0.3s;
+
+    </style>
+</head>
+<body>
+
+    <!-- Кнопка переключения темы -->
+<button class="theme-toggle" id="themeBtn">🌙 Темная тема</button>
+
+<div class="card">
+    <h1>Ну привет</h1>
+    <p>Я вот сделал такую штучку ↓</p>
+    <button class="btn" id="actionBtn">Нажми на меня</button>
+</div>
+
+<!-- Подключаем JavaScript перед закрывающим тегом body -->
+<script>
+    // Код JavaScript пишем сюда
+    // 1. Находим элементы на странице по их ID
+const themeBtn = document.getElementById('themeBtn');
+const actionBtn = document.getElementById('actionBtn');
+const body = document.body;
+
+// 2. Функция переключения темы
+themeBtn.addEventListener('click', () => {
+    // toggle переключает класс: если есть — удаляет, если нет — добавляет
+    body.classList.toggle('light-theme');
+
+    // Проверяем, включена ли светлая тема, и меняем текст на кнопке
+    if (body.classList.contains('light-theme')) {
+        themeBtn.textContent = '☀️ Светлая тема';
+    } else {
+        themeBtn.textContent = '🌙 Темная тема';
+    }
+});
+
+// 3. Обработчик клика для основной кнопки
+actionBtn.addEventListener('click', () => {
+    alert('опа как могу! 🎉');
+});
+</script>
+
+</body>
+</html>
